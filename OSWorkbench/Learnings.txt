@@ -1,0 +1,3 @@
+Fork:
+Basically if the pid_t variable is not initiazed then its default value is 0, 
+This is why the child of the forked process is 0. => as its literally just not initialzes

@@ -25,7 +25,7 @@ int main(){
     if(child==0){
         //we are in child process where we exec 
         execvp(command[0], command);
-        printf("This is a test. this is not supposed to get printed!\n");
+        printf("This is a test. this is not supposed to get printed!\n");//diff processid 
         }
     else if(child>0){
         //parent

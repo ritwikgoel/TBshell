@@ -7,11 +7,11 @@ Workspace for my OS projet.
 -waitpid
 -cd
 
-#Need to be done 
+# Need to be done 
 -piping 
 -features
 
-#Features
+# Features
 -schedule sleep
 -SMTP mail sending(Slightly dopubtful)
 -Convert text to morse code and maybe try to make something like cowsay

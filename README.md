@@ -10,6 +10,7 @@ Workspace for my OS projet.
 # Need to be done 
 -piping 
 -features
+-Signal handling
 
 # Features
 -schedule sleep

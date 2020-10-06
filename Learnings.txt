@@ -14,3 +14,8 @@ The second argument consists of the name of the command and the arguments passed
 It must also be terminated by NULL.
 although the current text, data, heap and stack segments of the process are replaced, the process id still remains unchanged, but the program gets overwritten completely.
 
+cd:
+Implicit declatations and how to takle them 
+int cd(char *path) {
+    return chdir(path);
+}

@@ -6,6 +6,9 @@
 #include <readline/history.h>
 #include <sys/wait.h>
 char **get_input(char *);
+int cd(char *path) {
+    return chdir(path);
+}
 char **get_input(char *input) {
     char **command = malloc(10 * sizeof(char *));//mkaing a word of max 10 characters
     char *separator = " ";
@@ -43,6 +46,10 @@ int main(){
     
         input = readline("Kilt:> ");
         command = get_input(input);
+        if(strcmp(command[0], "cd") == 0){
+            cd(command[1]);
+            continue;
+        }
        child=fork();
        if(child==0){
            //this is the child

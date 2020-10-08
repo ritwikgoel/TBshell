@@ -23,6 +23,9 @@ Workspace for my OS project.
 -Signal handling
 
 
+-Adding path to the shell name 
+
+
 # Need to be done 
 
 -piping 
@@ -32,8 +35,6 @@ Workspace for my OS project.
 -features
 
 
-
--Adding path to the shell name 
 
 
 # Features

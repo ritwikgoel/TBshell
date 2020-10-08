@@ -28,7 +28,8 @@ char **get_input(char *input) {
     return command;
 }
 int main(){
-    printf("Welcome to my shell\n\n");
+    printf("Welcome to my shell\n\n");//add a nicer welcome 
+    int ctr=0;
     while(1){
         signal(SIGINT, SIG_IGN);//what this does is basically ignores the ctrl c
         pid_t child,domer;
@@ -36,17 +37,32 @@ int main(){
        //ask for the input first
         char **command;
         char *input;
-        input = readline("Kilt:> $PATH~");//add the shell name here 
+        char cwd[1024];
+        //chdir("/path/to/change/directory/to");
+        getcwd(cwd, sizeof(cwd));
+        
+        while(ctr!=1){
+            getcwd(cwd, sizeof(cwd));
+            printf("Kilt %s:~$ ",cwd);
+            ctr++;
+            
+        }
+        input = readline("");//add the shell name here 
+        //printf("Kilt %s ~$ ",cwd);
         command = get_input(input);
         //if the command is empty
             if (command[0]==NULL) {      /* Handle empty commands */
             free(input);
             free(command);
             printf("\n");
+            getcwd(cwd, sizeof(cwd));
+            printf("Kilt %s:~$ ",cwd);
             continue;
         }
         if(strcmp(command[0], "cd") == 0){
             cd(command[1]);
+            getcwd(cwd, sizeof(cwd));
+            printf("Kilt %s:~$ ",cwd);
             continue;
         }
         child=fork();
@@ -59,7 +75,8 @@ int main(){
         }
         else if(child!=0){
             domer=waitpid(child,&stat_loc,WUNTRACED);
-            printf("The command is sucessfully run\n");
+            //printf("The command is sucessfully run\n");
+            printf("Kilt %s:~$ ",cwd);
             free(command);
             free(input);
         }

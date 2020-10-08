@@ -16,16 +16,29 @@ Workspace for my OS project.
 
 -cd
 
+
+-Error handling 
+
 # Need to be done 
 -piping 
+
 
 
 -features
 
 
+
 -Signal handling
 
+
+
+-Adding path to the shell name 
+
+
+
+
 # Features
+
 -schedule sleep
 
 

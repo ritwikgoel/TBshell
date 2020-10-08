@@ -27,45 +27,37 @@ char **get_input(char *input) {
     return command;
 }
 int main(){
-    /*
-    fork 
-    child goes to exevp
-    parent waits for the child to return 
-    loop up baby
-    handle cd later using the cd() function in c 
-    */
-
-  
-   while(1){
+    while(1){
         pid_t child,domer;
         int stat_loc;
        //ask for the input first
         char **command;
         char *input;
-
-    
-        input = readline("Kilt:> ");//add the shell name here 
+        input = readline("Kilt:> $PATH~");//add the shell name here 
         command = get_input(input);
+        //if the command is empty
+            if (command[0]==NULL) {      /* Handle empty commands */
+            free(input);
+            free(command);
+            continue;
+        }
         if(strcmp(command[0], "cd") == 0){
             cd(command[1]);
             continue;
         }
-       child=fork();
-       if(child==0){
-           //this is the child
-           //run the execvp here 
-           execvp(command[0],command);
+        child=fork();
+        if(child==0){
+            //this is the child
+            execvp(command[0],command);
+            printf("This is not supposed to get printed \n\n\n\n");
+        }
+        else if(child!=0){
+            domer=waitpid(child,&stat_loc,WUNTRACED);
+            printf("The command is sucessfully run\n");
+            free(command);
+            free(input);
+        }
+    }
+    return 0;
 
-       }
-       else if(child!=0){
-           //this is the parent 
-           //wait for the child to return
-           //THEn release all aloocated stuff.
-           domer=waitpid(child,&stat_loc,WUNTRACED);
-           free(input);
-           free(command);
-
-       }
-   }
-   return 0;
 }

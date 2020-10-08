@@ -19,7 +19,12 @@ Workspace for my OS project.
 
 -Error handling 
 
+
+-Signal handling
+
+
 # Need to be done 
+
 -piping 
 
 
@@ -28,13 +33,7 @@ Workspace for my OS project.
 
 
 
--Signal handling
-
-
-
 -Adding path to the shell name 
-
-
 
 
 # Features

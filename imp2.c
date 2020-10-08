@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <readline/history.h>
 #include <sys/wait.h>
+//ctrl+z to quit 
 char **get_input(char *);
 int cd(char *path) {
     return chdir(path);
@@ -27,7 +28,9 @@ char **get_input(char *input) {
     return command;
 }
 int main(){
+    printf("Welcome to my shell\n\n");
     while(1){
+        signal(SIGINT, SIG_IGN);//what this does is basically ignores the ctrl c
         pid_t child,domer;
         int stat_loc;
        //ask for the input first
@@ -39,6 +42,7 @@ int main(){
             if (command[0]==NULL) {      /* Handle empty commands */
             free(input);
             free(command);
+            printf("\n");
             continue;
         }
         if(strcmp(command[0], "cd") == 0){
@@ -48,8 +52,10 @@ int main(){
         child=fork();
         if(child==0){
             //this is the child
+            //over here before the execvp command we need to add a signal handler resetter
+            signal(SIGINT,SIG_DFL);//this is signal defaulter. this will allow us to use ctrl c in out progrmam 
             execvp(command[0],command);
-            printf("This is not supposed to get printed \n\n\n\n");
+            printf("This is not supposed to get printed \n\n\n\n");//this can happen if the execvp is unknown
         }
         else if(child!=0){
             domer=waitpid(child,&stat_loc,WUNTRACED);

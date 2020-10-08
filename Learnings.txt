@@ -19,3 +19,14 @@ Implicit declatations and how to takle them
 int cd(char *path) {
     return chdir(path);
 }
+
+Signal handlers:
+It does not really create a thread for the signal handler. However, when a signal is delivered, the signal handler asynchronously 
+interrupts a thread (in our case the main thread since we have a single threaded application). 
+Once interrupted, the signal handler executes its own code, and the thread may resume execution unless the signal 
+handler exits the program. The analogy to multiple threads helps to understand the flow of execution.
+so if we specify our own signal handler, then while forking even the child gets the same signal handler.
+Now lets assume that we specidfy a signal handler before the fork=>such that it ignores the ctrl-c signal handler. then even while we 
+are in the child, we wont be able to ctrl-c our way out.
+TO avoid this, before we use the execvp command, we reset the ctrl-c signal handler so that in the child, it can exit. Now if this 
+does exit, the program control will come to the parent and then it will loop around. 

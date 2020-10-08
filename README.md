@@ -29,9 +29,12 @@ Workspace for my OS project.
 -Running other executable files too
 
 
+-gcc working
+
+
 # Need to be done 
 
--piping 
+-piping(Started)
 
 
 

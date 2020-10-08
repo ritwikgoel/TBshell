@@ -29,6 +29,7 @@ char **get_input(char *input) {
 }
 
 /*
+use this fot the text highlighting 
 printf("\033[1;36m");
 printf("Kilt@%s:~$ ",cwd);
 printf("\033[0;m");

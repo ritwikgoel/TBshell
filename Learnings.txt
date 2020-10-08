@@ -30,3 +30,10 @@ Now lets assume that we specidfy a signal handler before the fork=>such that it 
 are in the child, we wont be able to ctrl-c our way out.
 TO avoid this, before we use the execvp command, we reset the ctrl-c signal handler so that in the child, it can exit. Now if this 
 does exit, the program control will come to the parent and then it will loop around. 
+
+
+Piping:
+The Unix/Linux systems allow stdout of a command to be
+connected to stdin of another command. You can make it do so by using the pipe character ‘|’.
+I need to connect stdout of one process to stdin of another process.data flows from left to right through the pipeline.
+For pipes, there is an read option and write option. It is an array of 2 intergers where 0 is read and 1 is write.

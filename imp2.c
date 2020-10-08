@@ -27,6 +27,14 @@ char **get_input(char *input) {
     command[index] = NULL;
     return command;
 }
+
+/*
+printf("\033[1;36m");
+printf("Kilt@%s:~$ ",cwd);
+printf("\033[0;m");
+
+*/
+
 int main(){
     printf("Welcome to my shell\n\n");//add a nicer welcome 
     int ctr=0;
@@ -43,7 +51,9 @@ int main(){
         
         while(ctr!=1){
             getcwd(cwd, sizeof(cwd));
-            printf("Kilt %s:~$ ",cwd);
+            printf("\033[1;36m");
+            printf("Kilt@%s:~$ ",cwd);
+            printf("\033[0;m");
             ctr++;
             
         }
@@ -56,13 +66,17 @@ int main(){
             free(command);
             printf("\n");
             getcwd(cwd, sizeof(cwd));
-            printf("Kilt %s:~$ ",cwd);
+            printf("\033[1;36m");
+            printf("Kilt@%s:~$ ",cwd);
+            printf("\033[0;m");
             continue;
         }
         if(strcmp(command[0], "cd") == 0){
             cd(command[1]);
             getcwd(cwd, sizeof(cwd));
-            printf("Kilt %s:~$ ",cwd);
+            printf("\033[1;36m");
+            printf("Kilt@%s:~$ ",cwd);
+            printf("\033[0;m");
             continue;
         }
         child=fork();
@@ -76,7 +90,9 @@ int main(){
         else if(child!=0){
             domer=waitpid(child,&stat_loc,WUNTRACED);
             //printf("The command is sucessfully run\n");
-            printf("Kilt %s:~$ ",cwd);
+            printf("\033[1;36m");
+            printf("Kilt@%s:~$ ",cwd);
+            printf("\033[0;m");
             free(command);
             free(input);
         }

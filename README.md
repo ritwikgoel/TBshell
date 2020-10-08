@@ -26,6 +26,9 @@ Workspace for my OS project.
 -Adding path to the shell name 
 
 
+-Running other executable files too
+
+
 # Need to be done 
 
 -piping 

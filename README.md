@@ -32,9 +32,12 @@ Workspace for my OS project.
 -gcc working
 
 
+-added welcome screen using bash script
+
+
 # Need to be done 
 
--piping(Started)
+-piping(Started)(stuck)
 
 
 

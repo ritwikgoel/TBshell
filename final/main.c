@@ -44,6 +44,10 @@ void welcome()
     system("./cowsayer.sh");
 }
 
+void sendmail(){
+    system("./sendmail.sh");
+}
+
 int main()
 {
     welcome();
@@ -86,6 +90,14 @@ int main()
         if(strcmp(command[0], "cd") == 0)
         {
             cd(command[1]);
+            getcwd(cwd, sizeof(cwd));
+            printf("\033[1;36m");
+            printf("Kilt@%s:~$ ",cwd);
+            printf("\033[0;m");
+            continue;
+        }
+        if(strcmp(command[0], "sendmail") == 0){
+            sendmail();
             getcwd(cwd, sizeof(cwd));
             printf("\033[1;36m");
             printf("Kilt@%s:~$ ",cwd);

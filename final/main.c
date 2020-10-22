@@ -77,7 +77,7 @@ int main()
             
         }
         input = readline("");//add the shell name here 
-        //printf("Kilt %s ~$ ",cwd);
+        
         command = get_input(input);
         //if the command is empty
             if (command[0]==NULL) 
@@ -115,10 +115,15 @@ int main()
             //over here before the execvp command we need to add a signal handler resetter
             signal(SIGINT,SIG_DFL);//this is signal defaulter. this will allow us to use ctrl c in out progrmam 
             // fprintf(fp,"%s\n",command);
-            fprintf(fp, "Change Case hi \n");
+            fprintf(fp, "%s %s\n",command[0],command[1]);
+            //printf("%s \n",command);
             fclose(fp); 
             execvp(command[0],command);
-            printf("This is not supposed to get printed \n\n\n\n");//this can happen if the execvp is unknown
+            printf("This is not supposed to get printed \n");//this can happen if the execvp is unknown
+            getcwd(cwd, sizeof(cwd));
+            printf("\033[1;36m");
+            printf("Kilt@%s:~$ ",cwd);
+            printf("\033[0;m");
         }
         else if(child!=0)
         {

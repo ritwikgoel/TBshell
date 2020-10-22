@@ -4,3 +4,20 @@ Change Case hi
 Change Case hi 
 Change Case hi 
 Change Case hi 
+POœ¾ V 
+POœ¾ V 
+P	QÏU 
+P	QÏU 
+p¶+áU 
+p¶+áU 
+Ø 
+Ø 
+ls 
+cwd 
+ls 
+ls 
+sws 
+ls 
+ls (null)
+pwd (null)
+ls -l

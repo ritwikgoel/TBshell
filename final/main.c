@@ -42,6 +42,7 @@ char **get_input(char *input)
 void welcome()
 {
     system("./cowsayer.sh");
+    printf("Made for my OS project \n ");
 }
 
 void sendmail(){
@@ -52,7 +53,10 @@ int main()
 {
     welcome();
     int ctr=0;
+    FILE *fp;
+    //fp=fopen("/home/tangobeer/Desktop/shell-workspace/final/log.txt", "a");
     while(1){
+        fp=fopen("/home/tangobeer/Desktop/shell-workspace/final/log.txt", "a");
         signal(SIGINT, SIG_IGN);//what this does is basically ignores the ctrl c
         pid_t child,domer;
         int stat_loc;
@@ -110,6 +114,9 @@ int main()
             //this is the child
             //over here before the execvp command we need to add a signal handler resetter
             signal(SIGINT,SIG_DFL);//this is signal defaulter. this will allow us to use ctrl c in out progrmam 
+            // fprintf(fp,"%s\n",command);
+            fprintf(fp, "Change Case hi \n");
+            fclose(fp); 
             execvp(command[0],command);
             printf("This is not supposed to get printed \n\n\n\n");//this can happen if the execvp is unknown
         }
@@ -124,6 +131,7 @@ int main()
             free(input);
         }
     }
+    fclose(fp);
     return 0;
 
 }

@@ -38,10 +38,13 @@ Workspace for my OS project.
 -features
 
 
+-Added log files
+
+
 -SMTP mail sending(Slightly dopubtful)
 
 
--Convert text to morse code and maybe try to make something like cowsay
+- maybe try to make something like cowsay
 
 
 # Need to be done 

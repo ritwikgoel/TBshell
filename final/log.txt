@@ -1,4 +1,0 @@
-ls (null)
-pwd (null)
-pwd (null)
-ls (null)

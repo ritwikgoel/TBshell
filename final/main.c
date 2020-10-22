@@ -54,7 +54,8 @@ int main()
     welcome();
     int ctr=0;
     FILE *fp;
-    //fp=fopen("/home/tangobeer/Desktop/shell-workspace/final/log.txt", "a");
+    fp=fopen("/home/tangobeer/Desktop/shell-workspace/final/log.txt", "w+");//for resetting the log file 
+    fclose(fp);
     while(1){
         fp=fopen("/home/tangobeer/Desktop/shell-workspace/final/log.txt", "a");
         signal(SIGINT, SIG_IGN);//what this does is basically ignores the ctrl c
@@ -71,23 +72,24 @@ int main()
         {
             getcwd(cwd, sizeof(cwd));
             printf("\033[1;36m");
-            printf("Kilt@%s:~$ ",cwd);
+            printf("Ritwik@%s:~$ ",cwd);
             printf("\033[0;m");
             ctr++;
             
         }
-        input = readline("");//add the shell name here 
+        input = readline("");
+        //add the shell name here 
         
         command = get_input(input);
         //if the command is empty
             if (command[0]==NULL) 
-            {      /* Handle empty commands */
+            {      
             free(input);
             free(command);
             printf("\n");
             getcwd(cwd, sizeof(cwd));
             printf("\033[1;36m");
-            printf("Kilt@%s:~$ ",cwd);
+            printf("Ritwik@%s:~$ ",cwd);
             printf("\033[0;m");
             continue;
         }
@@ -96,8 +98,11 @@ int main()
             cd(command[1]);
             getcwd(cwd, sizeof(cwd));
             printf("\033[1;36m");
-            printf("Kilt@%s:~$ ",cwd);
+            printf("Ritwik@%s:~$ ",cwd);
             printf("\033[0;m");
+            fprintf(fp, "%s %s\n",command[0],command[1]);
+            //printf("%s \n",command);
+            fclose(fp); 
             continue;
         }
         if(strcmp(command[0], "exit") == 0){
@@ -111,7 +116,7 @@ int main()
             sendmail();
             getcwd(cwd, sizeof(cwd));
             printf("\033[1;36m");
-            printf("Kilt@%s:~$ ",cwd);
+            printf("Ritwik@%s:~$ ",cwd);
             printf("\033[0;m");
             continue;
         }
@@ -126,10 +131,10 @@ int main()
             //printf("%s \n",command);
             fclose(fp); 
             execvp(command[0],command);
-            printf("This is not supposed to get printed \n");//this can happen if the execvp is unknown
+            printf("Command failed. Kindly check input! \n");//this can happen if the execvp is unknown or some wrong command
             getcwd(cwd, sizeof(cwd));
             printf("\033[1;36m");
-            printf("Kilt@%s:~$ ",cwd);
+            printf("Ritwik@%s:~$ ",cwd);
             printf("\033[0;m");
         }
         else if(child!=0)
@@ -137,13 +142,15 @@ int main()
             domer=waitpid(child,&stat_loc,WUNTRACED);
             //printf("The command is sucessfully run\n");
             printf("\033[1;36m");
-            printf("Kilt@%s:~$ ",cwd);
+            printf("Ritwik@%s:~$ ",cwd);
             printf("\033[0;m");
             free(command);
             free(input);
         }
     }
+    
     fclose(fp);
+    
     return 0;
 
 }

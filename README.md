@@ -35,23 +35,26 @@ Workspace for my OS project.
 -added welcome screen using bash script
 
 
-# Need to be done 
-
--piping(Started)(stuck)
-
-
-
 -features
-
-
-
-
-# Features
-
--schedule sleep
 
 
 -SMTP mail sending(Slightly dopubtful)
 
 
 -Convert text to morse code and maybe try to make something like cowsay
+
+
+# Need to be done 
+
+-piping(Started)(stuck)
+
+
+
+
+# Features to be added 
+
+
+-schedule sleep(sudo priveledges)
+
+
+

@@ -100,6 +100,13 @@ int main()
             printf("\033[0;m");
             continue;
         }
+        if(strcmp(command[0], "exit") == 0){
+            
+            printf("Exitting Ritwik's shell!\n");
+            fclose(fp);
+            exit(0);
+
+        }
         if(strcmp(command[0], "sendmail") == 0){
             sendmail();
             getcwd(cwd, sizeof(cwd));

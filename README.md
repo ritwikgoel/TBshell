@@ -1,5 +1,7 @@
 # OSWorkbench
-Workspace for my OS project.
+
+My implimentation of a UNIX shell writting in C 
+
 
 # Done
 -fork
@@ -41,23 +43,11 @@ Workspace for my OS project.
 -Added log files
 
 
--SMTP mail sending(Slightly dopubtful)
-
-
-- maybe try to make something like cowsay
-
-
-# Need to be done 
-
--piping(Started)(stuck)
+-sendmail
 
 
 
 
-# Features to be added 
-
-
--schedule sleep(sudo priveledges)
 
 
 
